@@ -1,0 +1,21 @@
+# {{ ansible_managed }}
+
+option domain-name         "{{ dhcpd_domain_name }}";
+option domain-name-servers {{ dhcpd_domain_name_servers }};
+default-lease-time         {{ dhcpd_default_lease_time }};
+max-lease-time             {{ dhcpd_max_lease_time }};
+authoritative;
+
+{% for item in dhcpd_subnets %}
+subnet {{ item.subnet }} netmask {{ item.netmask }} {
+    option routers      {{ item.routers }};
+    option subnet-mask  {{ item.netmask }};
+    range dynamic-bootp {{ item.range }};
+    next-server         {{ item.next_server }};
+{% if item.options is defined %}
+{% for key, value in item.options.iteritems() %}
+    {{ key }} "{{ value }}";
+{% endfor %}
+{% endif %}
+}
+{% endfor %}

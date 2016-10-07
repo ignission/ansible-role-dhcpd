@@ -1,0 +1,7 @@
+---
+- name: reload daemon
+  command: systemctl daemon-reload
+  changed_when: False
+
+- name: restart dhcpd
+  service: name=dhcpd state=restarted

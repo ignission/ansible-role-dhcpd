@@ -12,3 +12,6 @@
   notify:
     - reload daemon
     - restart dhcpd
+
+- name: Ensure dhcpd is started and enabled to start at boot.
+  service: name=dhcpd state=started enabled=yes

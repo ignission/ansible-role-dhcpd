@@ -14,6 +14,16 @@ None.
 |dhcpd_max_lease_time|Integer||7200|
 |dhcpd_subnets|Array||[]|
 
+#### dhcpd_subnets
+|Key|Type|Description|
+|:--|:---|:----------|
+|subnet|String||
+|routers|String||
+|netmask|String||
+|next_server|String||
+|range|String||
+|options|Hash||
+
 ## Dependencies
 None.
 

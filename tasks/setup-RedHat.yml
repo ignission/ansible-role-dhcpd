@@ -1,17 +1,17 @@
 ---
-- name: Ensure dhcp is installed.
+- name: RedHat | Ensure dhcp server is installed.
   yum: name=dhcp state=installed
 
-- name: Copy dhcpd config file in place.
+- name: RedHat | Copy dhcp server config file in place.
   template: src=dhcpd.conf.j2 dest=/etc/dhcp/dhcpd.conf
   notify:
     - restart dhcpd
 
-- name: Copy dhcpd service in place.
+- name: RedHat | Copy dhcp service in place.
   template: src=dhcpd.service.j2 dest=/usr/lib/systemd/system/dhcpd.service
   notify:
     - reload daemon
     - restart dhcpd
 
-- name: Ensure dhcpd is started and enabled to start at boot.
+- name: RedHat | Ensure dhcp server is started and enabled to start at boot.
   service: name=dhcpd state=started enabled=yes

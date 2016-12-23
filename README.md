@@ -28,6 +28,7 @@ None.
 #### dhcpd_groups
 |Key|Type|Description|
 |:--|:---|:----------|
+|next_server|String||
 |filename|String||
 |`hosts`|Hash||
 

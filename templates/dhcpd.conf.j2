@@ -23,6 +23,9 @@ subnet {{ item.subnet }} netmask {{ item.netmask }} {
 # groups
 {% for item in dhcpd_groups %}
 group {
+{% if item.next_server is defined %}
+  next-server {{ item.next_server }};
+{% endif %}
 {% if item.filename is defined %}
   filename "{{ item.filename }}";
 {% endif %}

@@ -5,3 +5,4 @@ dhcpd_domain_name_servers: 8.8.8.8
 dhcpd_default_lease_time: 600
 dhcpd_max_lease_time: 7200
 dhcpd_subnets: []
+dhcpd_groups: []

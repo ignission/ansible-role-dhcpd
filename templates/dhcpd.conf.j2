@@ -18,4 +18,17 @@ subnet {{ item.subnet }} netmask {{ item.netmask }} {
 {% endfor %}
 {% endif %}
 }
+
+{% endfor %}
+# groups
+{% for item in dhcpd_groups %}
+group {
+{% if item.filename is defined %}
+  filename "{{ item.filename }}";
+{% endif %}
+{% for key, value in item.hosts.iteritems() %}
+  host {{ key }} { hardware ethernet {{ value.address }}; }
+{% endfor %}
+}
+
 {% endfor %}

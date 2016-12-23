@@ -12,7 +12,8 @@ None.
 |dhcpd_domain_name_servers|String||8.8.8.8|
 |dhcpd_default_lease_time|Integer||600|
 |dhcpd_max_lease_time|Integer||7200|
-|dhcpd_subnets|Array||[]|
+|`dhcpd_subnets`|Array||[]|
+|`dhcpd_groups`|Array||[]|
 
 #### dhcpd_subnets
 |Key|Type|Description|
@@ -23,6 +24,19 @@ None.
 |next_server|String||
 |range|String||
 |options|Hash||
+
+#### dhcpd_groups
+|Key|Type|Description|
+|:--|:---|:----------|
+|filename|String||
+|`hosts`|Hash||
+
+#### hosts
+`key` is host identifier.
+
+|Value|Type|Description|
+|:--|:---|:----------|
+|address|String|MAC address|
 
 ## Dependencies
 None.
@@ -41,4 +55,11 @@ None.
         netmask: 255.255.255.0
         next_server: 192.168.33.1
         range: "192.168.33.240 192.168.33.250"
+    dhcpd_groups:
+      - filename: pxelinux.0
+        hosts:
+          host1:
+            address: 00:11:AA:BB:CC:DD
+          host2:
+            address: 11:22:CC:DD:EE:EE      
 ```

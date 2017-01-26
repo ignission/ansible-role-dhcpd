@@ -1,16 +1,16 @@
 ---
-- name: Ubuntu | Ensure dhcp server is installed.
+- name: Ensure dhcp server is installed.
   apt: name=isc-dhcp-server state=present
 
-- name: Ubuntu | Copy dhcp server config file in place.
+- name: Copy dhcp server config file in place.
   template: src=dhcpd.conf.j2 dest=/etc/dhcp/dhcpd.conf
   notify:
     - restart isc-dhcp-server
 
-- name: Ubuntu | Copy dhcp server option in place.
+- name: Copy dhcp server option in place.
   template: src=isc-dhcp-server.j2 dest=/etc/default/isc-dhcp-server
   notify:
     - restart isc-dhcp-server
 
-- name: Ubuntu | Ensure dhcp server is started and enabled to start at boot.
+- name: Ensure dhcp server is started and enabled to start at boot.
   service: name=isc-dhcp-server state=started enabled=yes

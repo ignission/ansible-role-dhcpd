@@ -2,6 +2,8 @@
 # install
 - include: setup-RedHat.yml
   when: ansible_os_family == 'RedHat'
+  static: no
 
 - include: setup-Ubuntu.yml
   when: ansible_distribution == 'Ubuntu'
+  static: no

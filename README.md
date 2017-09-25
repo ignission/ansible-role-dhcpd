@@ -1,10 +1,16 @@
-# Ansible role: dhcpd
+Ansible Role: dhcpd
+=========
+
 Installs and configures DHCP server.
 
-## Requirements
+Requirements
+------------
+
 None.
 
-## Role Variables
+Role Variables
+--------------
+
 |Key|Type|Description|Default|
 |:--|:---|:----------|:------|
 |dhcpd_bind_interface|String||eth0|
@@ -39,15 +45,18 @@ None.
 |:--|:---|:----------|
 |address|String|MAC address|
 
-## Dependencies
+Dependencies
+------------
+
 None.
 
-## Example playbook
+Example Playbook
+----------------
 
 ```yaml
 - hosts: all
   roles:
-    - { role: dhcpd }
+    - { role: shomatan.dhcpd }
   vars:
     dhcpd_bind_interface: enp0s8
     dhcpd_subnets:
@@ -64,3 +73,13 @@ None.
           host2:
             address: 11:22:CC:DD:EE:EE      
 ```
+
+License
+-------
+
+BSD
+
+Author Information
+------------------
+
+Shoma Nishitateno (shoma416@gmail.com)
